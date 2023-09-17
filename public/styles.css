@@ -20,7 +20,6 @@ h1 {
 	margin: 4rem 0px;
 	font-weight: 400;
 	font-size: 3rem;
-	margin-left: 1rem;
 }
 
 h2 {
@@ -34,6 +33,10 @@ h2 {
 p {
 	/* text-align: justify; */
 	line-height: 1.6;
+}
+
+a {
+	color: var(--accent);
 }
 
 h3>a {

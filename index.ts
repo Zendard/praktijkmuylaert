@@ -12,6 +12,10 @@ app.get("/", (req, res) => {
 	res.render("index");
 });
 
+app.get("/contact", (req, res) => {
+	res.render("contact");
+});
+
 app.use("/kinesitherapie", kine);
 app.use("/osteopathie", osteo);
 
