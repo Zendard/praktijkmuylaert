@@ -3,7 +3,6 @@ const slides = document.getElementsByClassName("img-slide");
 showSlides();
 
 function showSlides() {
-	console.log(slideIndex);
 	for (i = 0; i < 3; i++) {
 		if (i != slideIndex) {
 			slides[i].classList.remove("fade-in");
