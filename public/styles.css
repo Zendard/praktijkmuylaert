@@ -10,8 +10,8 @@ body {
 	background-color: var(--background);
 	color: var(--text);
 	font-family: sans-serif;
-	margin: 0px;
-	padding: 0px calc((25vw * 2) - 480px);
+	margin: 0px clamp(0px, calc((25vw * 2) - 480px), 500px);
+	padding: 0px 1rem;
 	font-size: 1rem;
 	transition: all 0.5s;
 }
@@ -29,12 +29,10 @@ h2 {
 	border-bottom: solid var(--secondary) 0.3rem;
 	padding-bottom: 1.5rem;
 	margin-bottom: 3rem;
-	margin-left: 1rem;
 }
 
 p {
 	/* text-align: justify; */
-	margin: 1rem;
 	line-height: 1.6;
 }
 
@@ -44,6 +42,7 @@ h3>a {
 }
 
 #contact {
+	margin-top: 5rem;
 	display: flex;
 	border-bottom: none;
 	justify-content: center;
@@ -154,6 +153,8 @@ nav {
 	}
 
 	.nav-mobile {
+		margin-left: -1rem;
+		width: 100vw;
 		position: relative;
 		z-index: 1000;
 		cursor: pointer;
@@ -198,6 +199,10 @@ nav {
 
 	nav {
 		display: none;
+	}
+
+	#img-carousel {
+		margin-left: -1rem;
 	}
 }
 

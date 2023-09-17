@@ -1,5 +1,6 @@
 import express from "express";
 import kine from "./routes/kine";
+import osteo from "./routes/osteo";
 const port = parseInt(Bun.env.PORT || "");
 
 const app = express();
@@ -12,6 +13,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/kinesitherapie", kine);
+app.use("/osteopathie", osteo);
 
 app.get(
 	"/*",
