@@ -1,10 +1,10 @@
-import Express from "express";
+import express from "express";
 import kine from "./routes/kine";
 const port = parseInt(Bun.env.PORT || "");
 
-const app = Express();
+const app = express();
 app.set("view engine", "ejs");
-app.use(Express.static("./public"));
+app.use(express.static("./public"));
 app.set("views", "./views");
 
 app.get("/", (req, res) => {
