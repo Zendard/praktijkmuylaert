@@ -11,4 +11,12 @@ router.get("/werkwijze", (req, res) => {
 	res.render("kine-werkwijze");
 });
 
+router.get("/indicaties", (req, res) => {
+	res.render("kine-indicaties");
+});
+
+router.get("/proef2move", (req, res) => {
+	res.render("kine-proef2move");
+});
+
 export default router;

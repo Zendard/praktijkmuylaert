@@ -52,6 +52,20 @@ h3 {
 	font-size: 1.4rem;
 }
 
+ul {
+	margin-top: 3rem;
+	margin-bottom: 2rem;
+}
+
+li {
+	margin: 1rem;
+	color: var(--text);
+}
+
+li::marker {
+	color: var(--accent);
+}
+
 footer {
 	font-size: 0.9rem;
 	display: flex;
