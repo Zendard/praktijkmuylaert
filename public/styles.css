@@ -144,7 +144,9 @@ nav {
 
 @media (hover: none) {
 	.nav-mobile>div {
-		translate: -100%;
+		width: 10rem;
+		left: 0px;
+		translate: calc(-10rem - 3rem - clamp(0px, calc((25vw * 2) - 480px), 500px));
 		padding: 1rem;
 		cursor: initial;
 		display: block;
@@ -156,8 +158,7 @@ nav {
 	}
 
 	.nav-mobile {
-		margin-left: -1rem;
-		width: 100vw;
+		width: 100%;
 		position: relative;
 		z-index: 1000;
 		cursor: pointer;
