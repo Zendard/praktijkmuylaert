@@ -1,13 +1,13 @@
 :root {
 	--text: #ffffff;
-	--background: #14141f;
-	--primary: #6d3496;
-	--secondary: #175051;
+	--background: linear-gradient(327.21deg, rgba(33, 0, 75, 0.24) 3.65%, rgba(60, 0, 136, 0) 40.32%), linear-gradient(245.93deg, rgba(209, 21, 111, 0.16) 0%, rgba(209, 25, 80, 0) 36.63%), linear-gradient(147.6deg, rgba(58, 19, 255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%), #13111C;
+	--primary: #15008d;
+	--secondary: #6a0036;
 	--accent: #8544ff;
 }
 
 body {
-	background-color: var(--background);
+	background: var(--background);
 	color: var(--text);
 	font-family: sans-serif;
 	margin: 0px clamp(0px, calc((15vw * 2) - 480px), 500px);
@@ -17,6 +17,7 @@ body {
 }
 
 h1 {
+	filter: brightness(150%);
 	background-image: linear-gradient(45deg, var(--primary), purple);
 	background-clip: text;
 	color: transparent;
@@ -70,10 +71,12 @@ i {
 }
 
 .hero-link {
+	animation: hero-link-pre 0.5s 0s;
+	animation: hero-link-load 1.5s 0.5s;
+	box-shadow: -0.7rem 0.7rem var(--secondary);
 	background-image: linear-gradient(315deg, var(--accent) 90%, var(--primary) 100%);
 	border-radius: 2rem;
 	transition: all 0.7s;
-	box-shadow: -0.7rem 0.7rem var(--secondary);
 
 	a {
 		display: block;
@@ -85,6 +88,18 @@ i {
 	}
 
 	a:hover {
+		translate: none;
+	}
+}
+
+@keyframes hero-link-load {
+	from {
+		box-shadow: none;
+		translate: -0.7rem 0.7rem;
+	}
+
+	to {
+		box-shadow: -0.7rem 0.7rem var(--secondary);
 		translate: none;
 	}
 }
@@ -103,6 +118,8 @@ i {
 }
 
 .grid-item {
+
+	background-color: var(--background);
 	padding: 1rem 2vw;
 	border: 0.5rem solid var(--primary);
 	border-radius: 2rem;
@@ -303,10 +320,8 @@ nav {
 }
 
 #img-carousel {
-	box-shadow:
-		-1rem 1rem hsla(181, 56%, 20%, 50%),
-		-2rem 2rem hsla(181, 56%, 20%, 50%),
-		-3rem 3rem hsla(181, 56%, 20%, 50%);
+	translate: -3rem 3rem;
+	animation: img-carousel-load 1.5s 0.5s forwards;
 	border-radius: 2rem;
 	overflow: hidden;
 	width: clamp(10px, 100vw, 700px);
@@ -315,6 +330,21 @@ nav {
 	position: relative;
 	z-index: 0;
 	margin-bottom: 5rem;
+}
+
+@keyframes img-carousel-load {
+	from {
+		box-shadow: none;
+		translate: -3rem 3rem;
+	}
+
+	to {
+		translate: none;
+		box-shadow:
+			-1rem 1rem hsla(329, 100%, 21%, 50%),
+			-2rem 2rem hsla(329, 100%, 21%, 50%),
+			-3rem 3rem hsla(329, 100%, 21%, 50%);
+	}
 }
 
 
