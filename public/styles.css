@@ -1,25 +1,29 @@
 :root {
-	--text: #081520;
-	--background: #ddcfaf;
-	--primary: #93a9bf;
-	--secondary: #ffffff;
-	--accent: #1e73be;
+	--text: #ffffff;
+	--background: #14141f;
+	--primary: #807eb6;
+	--secondary: #175051;
+	--accent: #8544ff;
 }
 
 body {
 	background-color: var(--background);
 	color: var(--text);
 	font-family: sans-serif;
-	margin: 0px clamp(0px, calc((25vw * 2) - 480px), 500px);
+	margin: 0px clamp(0px, calc((15vw * 2) - 480px), 500px);
 	padding: 0px 1rem;
 	font-size: 1rem;
 	transition: all 0.5s;
 }
 
 h1 {
-	margin: 4rem 0px;
+	background-image: linear-gradient(315deg, var(--accent) 90%, var(--primary) 100%);
+	background-clip: text;
+	color: transparent;
+	position: relative;
+	margin: 2rem 0px;
 	font-weight: 400;
-	font-size: 3rem;
+	font-size: 5rem;
 }
 
 h2 {
@@ -89,24 +93,30 @@ footer {
 }
 
 nav {
-	width: 100%;
+	margin-top: 1rem;
+	gap: 0.3rem;
 	display: flex;
 	justify-content: center;
-	background-color: var(--primary);
 	flex-wrap: wrap;
 }
 
 .nav-link {
+	border-radius: 0.7rem;
 	color: var(--text);
 	background-color: var(--primary);
 	padding: 1rem 1vw;
 	margin: 0px;
 	position: relative;
 	font-weight: 400;
+	transition: translate 0.3s;
 }
 
-.nav-link:active {
-	color: var(--accent);
+.nav-link:first-child {
+	border-radius: 1.5rem 0.7rem 0.7rem 1.5rem;
+}
+
+.nav-link:last-child {
+	border-radius: 0.7rem 1.5rem 1.5rem 0.7rem;
 }
 
 .nav-sub,
@@ -115,11 +125,6 @@ nav {
 	color: inherit;
 	text-decoration: none;
 	z-index: 10;
-}
-
-.nav-link>a {
-	width: 100%;
-	height: 100%;
 }
 
 .nav-link>div {
@@ -134,9 +139,9 @@ nav {
 	z-index: 10;
 }
 
-.nav-link:hover>div {
+/* .nav-link:hover>div {
 	visibility: visible;
-}
+} */
 
 .nav-mobile {
 	display: none;
@@ -221,7 +226,8 @@ nav {
 
 .nav-sub:hover,
 .nav-link:hover {
-	filter: brightness(85%);
+	translate: 0rem 0.3rem;
+	filter: brightness(60%);
 }
 
 .nav-link>div>:last-child {
@@ -230,7 +236,6 @@ nav {
 
 .nav-current {
 	background-color: var(--accent);
-	color: var(--secondary);
 }
 
 #img-carousel {
