@@ -67,7 +67,10 @@ i {
 .hero {
 	display: flex;
 	justify-content: space-between;
-	padding: 4rem 2rem;
+	padding: 4rem 0px;
+	padding-left: clamp(0.5rem, 5vw, 10rem);
+	flex-wrap: wrap;
+	gap: 1rem;
 }
 
 .hero-link {
@@ -338,12 +341,13 @@ nav {
 	animation: img-carousel-load 1.5s 0.5s forwards;
 	border-radius: 2rem;
 	overflow: hidden;
-	width: clamp(10px, 100vw, 700px);
+	width: clamp(10px, calc(100vw - 3rem), 700px);
 	aspect-ratio: 7 / 3;
 	max-width: 1000px;
 	position: relative;
 	z-index: 0;
-	margin-bottom: 5rem;
+	margin: 2rem min(2vw, 2rem);
+	margin-left: 6vw;
 }
 
 @keyframes img-carousel-load {
@@ -354,9 +358,9 @@ nav {
 
 	to {
 		translate: none;
-		box-shadow: -1rem 1rem hsla(329, 100%, 21%, 50%),
-			-2rem 2rem hsla(329, 100%, 21%, 50%),
-			-3rem 3rem hsla(329, 100%, 21%, 50%);
+		box-shadow: -2vw 2vw hsla(329, 100%, 21%, 50%),
+			-4vw 4vw hsla(329, 100%, 21%, 50%),
+			-6vw 6vw hsla(329, 100%, 21%, 50%);
 	}
 }
 
