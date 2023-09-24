@@ -118,7 +118,7 @@ i {
 }
 
 .grid-item {
-
+	box-shadow: -0.4rem 1rem var(--secondary);
 	background-color: var(--background);
 	padding: 1rem 2vw;
 	border: 0.5rem solid var(--primary);
