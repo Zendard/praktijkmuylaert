@@ -3,7 +3,7 @@
 	--background: linear-gradient(327.21deg, rgba(33, 0, 75, 0.24) 3.65%, rgba(60, 0, 136, 0) 40.32%), linear-gradient(245.93deg, rgba(209, 21, 111, 0.16) 0%, rgba(209, 25, 80, 0) 36.63%), linear-gradient(147.6deg, rgba(58, 19, 255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%), #13111C;
 	--primary: #15008d;
 	--secondary: #6a0036;
-	--accent: #8544ff;
+	--accent: #bb00ff;
 }
 
 body {
@@ -115,7 +115,7 @@ i {
 .grid {
 	justify-content: space-evenly;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 	grid-auto-rows: calc(20rem + 6vw);
 	gap: 2rem;
 	margin-bottom: calc(6vw + 2rem);
@@ -248,63 +248,61 @@ nav {
 	display: none;
 }
 
-@media (hover: none) {
-	.nav-mobile>div {
-		width: 10rem;
-		left: 0px;
-		translate: calc(-10rem - 3rem - clamp(0px, calc((25vw * 2) - 480px), 500px));
-		padding: 1rem;
-		cursor: initial;
-		display: block;
-		position: absolute;
-		background-color: var(--secondary);
-		top: calc(2rem + 38.4px);
-		left: 0px;
-		transition: all 1s;
+svg {
+	width: clamp(1rem, 5vw, 2rem);
+
+	g>circle {
+		fill: var(--accent);
 	}
+
+	transition: all 1s;
+}
+
+@media (hover: none) {
 
 	.nav-mobile {
-		width: 100%;
+		cursor: pointer;
+		display: block;
+		padding: 1rem;
+		width: fit-content;
+		overflow: visible;
 		position: relative;
 		z-index: 1000;
-		cursor: pointer;
-		display: flex;
-		background-color: var(--primary);
 	}
 
-	.nav-mobile>p {
-		color: var(--secondary);
-		flex-grow: 1;
-		margin: 1rem 0px;
-		margin-left: 1rem;
-		font-size: 1.5rem;
-	}
 
 	.nav-mobile-active>div {
-		translate: 0%;
-	}
-
-	.nav-mobile>div>.nav-link>div {
-		width: auto;
-		margin-left: 1rem;
+		width: 100vw;
+		height: 100vh;
 		display: flex;
-		flex-direction: column;
-		position: static;
 	}
 
-	.nav-mobile>div>.nav-link>div>.nav-sub {
-		text-transform: none;
-		font-size: 0.8rem;
-		background-color: var(--secondary);
-		visibility: visible;
-		display: inline;
+	.nav-mobile-active>svg>g>circle {
+		fill: var(--text);
 	}
 
-	.nav-mobile>div>.nav-link {
-		text-transform: uppercase;
-		background-color: var(--secondary);
-		color: var(--text);
-		border-top: solid var(--primary);
+
+
+	.nav-mobile>div {
+		background: var(--background);
+		transition: all 1s;
+		position: absolute;
+		width: 0px;
+		height: 0px;
+		top: 0px;
+		left: 0px;
+		z-index: 1000;
+		display: none;
+	}
+
+	@keyframes display-toggle {
+		from {
+			display: none;
+		}
+
+		to {
+			display: flex;
+		}
 	}
 
 	nav {
