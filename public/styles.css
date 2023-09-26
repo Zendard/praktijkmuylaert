@@ -196,6 +196,7 @@ nav {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
+	z-index: 10;
 }
 
 .nav-link {
@@ -206,6 +207,7 @@ nav {
 	position: relative;
 	font-weight: 400;
 	transition: translate 0.3s;
+	z-index: 10;
 
 	a:hover {
 		translate: none;
@@ -229,7 +231,6 @@ nav {
 }
 
 .nav-link>div {
-	background-color: var(--secondary);
 	visibility: collapse;
 	position: absolute;
 	top: calc(2rem + 19px);
@@ -240,9 +241,10 @@ nav {
 	z-index: 10;
 }
 
-/* .nav-link:hover>div {
+.nav-link:hover>div {
 	visibility: visible;
-} */
+}
+
 
 .nav-mobile {
 	display: none;
@@ -296,7 +298,6 @@ svg {
 
 	.nav-mobile>div {
 		background: var(--background);
-		transition: all 1s;
 		position: absolute;
 		top: 0px;
 		left: 0px;
@@ -305,6 +306,7 @@ svg {
 		z-index: 1000;
 		margin: -1rem;
 		padding: 1rem;
+		z-index: 10;
 	}
 
 	.nav-link-mobile {
@@ -341,22 +343,26 @@ svg {
 }
 
 .nav-sub {
+	transition: none;
+	margin-top: 1rem;
 	color: var(--text);
 	background-color: var(--secondary);
 	padding: 0.6rem 2vw;
 	padding-left: 1vw;
-	border-bottom: solid 0.2rem var(--primary);
 	border-collapse: collapse;
+	border-radius: 2rem;
+	box-shadow: -0.3rem 0.3rem var(--primary);
+	z-index: 10;
 }
 
-.nav-sub:hover,
 .nav-link:hover {
 	translate: 0rem 0.3rem;
-	filter: brightness(60%);
-}
+	filter: brightness(75%);
+	z-index: 10;
 
-.nav-link>div>:last-child {
-	border: none;
+	.nav-sub {
+		filter: brightness(200%);
+	}
 }
 
 .nav-current {
