@@ -248,8 +248,14 @@ nav {
 	display: none;
 }
 
+.nav-mobile>div {
+	display: none;
+}
+
 svg {
 	width: clamp(1rem, 5vw, 2rem);
+	position: relative;
+	z-index: 9999;
 
 	g>circle {
 		fill: var(--accent);
@@ -275,24 +281,48 @@ svg {
 		width: 100vw;
 		height: 100vh;
 		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
 	}
 
 	.nav-mobile-active>svg>g>circle {
 		fill: var(--text);
 	}
 
-
+	.nav-mobile-active {
+		position: fixed;
+	}
 
 	.nav-mobile>div {
 		background: var(--background);
 		transition: all 1s;
 		position: absolute;
-		width: 0px;
-		height: 0px;
 		top: 0px;
 		left: 0px;
+		bottom: 0px;
+		right: 0px;
 		z-index: 1000;
-		display: none;
+		margin: -1rem;
+		padding: 1rem;
+	}
+
+	.nav-link-mobile {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.nav-link-mobile>a {
+		padding: 1rem;
+		background-color: var(--accent);
+		border-radius: 2rem;
+		color: var(--text);
+		margin-bottom: 0.5rem;
+	}
+
+	.nav-sub {
+		border-radius: 2rem;
 	}
 
 	@keyframes display-toggle {
