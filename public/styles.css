@@ -23,13 +23,30 @@ h1 {
 	color: transparent;
 	position: relative;
 	font-weight: 400;
-	font-size: 5rem;
+	font-size: clamp(1px, 17vw, 5rem);
 }
 
 h2 {
 	text-align: center;
 	font-weight: 400;
 	font-size: 2.5rem;
+	word-wrap: break-word;
+}
+
+#grid-title {
+	width: fit-content;
+	margin: auto;
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+}
+
+#grid-title:after {
+	content: "";
+	float: left;
+	background: var(--secondary);
+	width: 100%;
+	height: 6px;
+	border-radius: 3px;
 }
 
 h3 {
@@ -81,6 +98,7 @@ i {
 	background-image: linear-gradient(315deg, var(--accent) 90%, var(--primary) 100%);
 	border-radius: 2rem;
 	transition: all 0.7s;
+	width: clamp(10px, calc(90vw - 1.5rem), 20rem);
 
 	a {
 		display: block;
@@ -116,7 +134,7 @@ i {
 .grid {
 	justify-content: space-evenly;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(clamp(10px, 90vw, 26rem), 1fr));
 	grid-auto-rows: calc(20rem + 6vw);
 	gap: 2rem;
 	margin-bottom: calc(6vw + 2rem);
@@ -126,6 +144,7 @@ i {
 	background: var(--background);
 	padding: 1rem 2vw;
 	border-radius: 2rem;
+	border: var(--secondary) solid 0.5rem;
 	text-align: center;
 	font-weight: 400;
 	font-size: 2.5rem;
@@ -134,24 +153,7 @@ i {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	position: relative;
-	margin-left: 6vw;
-	margin-bottom: 6vw;
-}
-
-.grid-item::before {
-	box-shadow: -2vw 2vw hsla(329, 100%, 21%, 50%),
-		-4vw 4vw hsla(329, 100%, 21%, 50%),
-		-6vw 6vw hsla(329, 100%, 21%, 50%);
-	content: '';
-	position: absolute;
-	top: -0.5rem;
-	right: -0.5rem;
-	bottom: -0.5rem;
-	left: -0.5rem;
-	z-index: -1;
-	border-radius: inherit;
-	background: linear-gradient(45deg, var(--primary), var(--secondary));
+	height: fit-content;
 }
 
 #contact {
@@ -375,7 +377,7 @@ svg {
 	animation: img-carousel-load 1.5s 0.5s forwards;
 	border-radius: 2rem;
 	overflow: hidden;
-	width: clamp(10px, calc(47vw - 3rem), 700px);
+	width: clamp(10px, calc(90vw - 3rem), 700px);
 	aspect-ratio: 7 / 3;
 	position: relative;
 	z-index: 0;
