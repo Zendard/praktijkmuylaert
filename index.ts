@@ -21,15 +21,9 @@ app.get("/contact", (req, res) => {
 app.use("/kinesitherapie", kine);
 app.use("/osteopathie", osteo);
 
-app.get(
-	"/*",
-	(req, res, next) => {
-		res.render("404");
-		next();
-	},
-	(req, res) => {
-		res.sendStatus(404);
-	}
+app.get("/*",(req, res) => {
+	res.render("404");
+}
 );
 
 app.listen(port, () => {
