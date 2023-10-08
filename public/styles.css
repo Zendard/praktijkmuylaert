@@ -157,7 +157,6 @@ i {
 	justify-content: space-evenly;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(clamp(10px, 90vw, 26rem), 1fr));
-	grid-auto-rows: calc(20rem + 6vw);
 	gap: 2rem;
 	margin-bottom: calc(6vw + 2rem);
 }
