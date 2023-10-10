@@ -7,7 +7,6 @@ const port = parseInt(Bun.env.PORT || "");
 
 const app = express();
 app.set("view engine", "ejs");
-console.log(__dirname+"/public/favicon.ico");
 app.use(favicon(__dirname+"/public/favicon.ico"));
 app.use(express.static("./public"));
 app.set("views", "./views");
