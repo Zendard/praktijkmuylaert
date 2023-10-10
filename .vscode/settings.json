@@ -4,5 +4,10 @@
 	},
 	"eslint.validate": [
 		"typescript"
+	],
+	"cSpell.words": [
+		"kinesitherapie",
+		"osteo",
+		"osteopathie"
 	]
 }

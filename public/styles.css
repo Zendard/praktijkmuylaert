@@ -20,6 +20,7 @@ body {
 h1 {
 	filter: brightness(150%) drop-shadow(-0.3rem 0.3rem black);
 	background-image: linear-gradient(45deg, var(--primary), purple);
+	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
 	position: relative;
@@ -121,19 +122,19 @@ i {
 	border-radius: 2rem;
 	transition: all 0.7s;
 	width: clamp(10px, calc(90vw - 1.5rem), 20rem);
+}
 
-	a {
-		display: block;
-		padding: 1rem;
-		color: var(--text);
-		text-decoration: none;
-		text-align: center;
-		font-size: 1.5rem;
-	}
+.hero-link>a {
+	display: block;
+	padding: 1rem;
+	color: var(--text);
+	text-decoration: none;
+	text-align: center;
+	font-size: 1.5rem;
+}
 
-	a:hover {
-		translate: none;
-	}
+.hero-link>a:hover {
+	translate: none;
 }
 
 @keyframes hero-link-load {
@@ -232,10 +233,10 @@ nav {
 	font-weight: 400;
 	transition: translate 0.3s;
 	z-index: 10;
+}
 
-	a:hover {
-		translate: none;
-	}
+.nav-link>a:hover {
+	translate: none;
 }
 
 .nav-link:first-child {
@@ -286,13 +287,13 @@ svg {
 	width: clamp(1rem, 5vw, 2rem);
 	position: relative;
 	z-index: 9999;
-
-	g>circle {
-		fill: var(--accent);
-	}
-
 	transition: all 1s;
 }
+
+svg>g>circle {
+	fill: var(--accent);
+}
+
 
 @media (hover: none) {
 
@@ -317,10 +318,10 @@ svg {
 
 	.nav-mobile-active {
 		position: fixed;
+	}
 
-		svg>g>circle {
-			fill: var(--text);
-		}
+	.nav-mobile-active>svg>g>circle {
+		fill: var(--text);
 	}
 
 	.nav-mobile>div {
