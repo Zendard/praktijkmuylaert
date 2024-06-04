@@ -22,6 +22,12 @@ body {
   z-index: -11;
 }
 
+h1{
+  font-size: 72px;
+  margin-left: auto;
+  text-align: center;
+}
+
 .reveal{
   translate: 0 40px;
   opacity: 0;
@@ -51,8 +57,8 @@ nav {
 }
 
 nav>a {
-  font-size: 36px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   color: var(--text);
   text-decoration: none;
   z-index: 1;
@@ -62,7 +68,16 @@ nav>a {
   font-size: 36px;
   font-weight: 700;
   flex-grow: 3;
+  margin-left: 0px;
+  text-align: left;
   z-index: 1;
+}
+
+.info{
+  font-size: 24px;
+  margin: auto;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 #hero {
