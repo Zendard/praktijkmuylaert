@@ -22,13 +22,25 @@ body {
   z-index: -11;
 }
 
+.reveal{
+  translate: 0 40px;
+  opacity: 0;
+  transition: 1s;
+  transition-property: opacity translate;
+}
+
+.active{
+  translate: 0;
+  opacity: 1;
+}
+
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   max-width: 1200px;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 nav {
@@ -43,12 +55,14 @@ nav>a {
   font-weight: 500;
   color: var(--text);
   text-decoration: none;
+  z-index: 1;
 }
 
 #logo {
   font-size: 36px;
   font-weight: 700;
   flex-grow: 3;
+  z-index: 1;
 }
 
 #hero {
@@ -77,12 +91,11 @@ a.button {
   color: var(--text);
   border: solid 2px var(--primary);
   transition: all 0.25s;
-}
-
-a.button:hover() {
-  background-color: var(--accent);
-  border-color: var(--accent);
-  color: var(--background);
+&:hover{
+   background-color: var(--accent);
+   border-color: var(--accent);
+   color: var(--background);
+  }
 }
 
 
