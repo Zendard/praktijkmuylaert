@@ -1,20 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 :root {
   --text: #ffffff;
   --background: #1f1f2b;
-  --primary: #1a948a;
+  --primary: #136c65;
   --accent: #3df5ff;
 }
 
 html {
+  scroll-behavior: smooth;
   color-scheme: dark;
 }
 
 body {
   background-color: var(--background);
   color: var(--text);
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   margin: 0;
   padding: 0;
   padding-bottom: 200px;
@@ -57,7 +58,18 @@ nav {
   flex-grow: 1;
 }
 
-nav>a {
+a {
+  color: var(--primary);
+  transition: color 0.5s;
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+li {
+  font-size: 26px;
+}
+nav > a {
   font-size: 16px;
   font-weight: 600;
   color: var(--text);
@@ -88,7 +100,7 @@ nav>a {
 
 #hero {
   height: 625px;
-  background-color: #2A2A2A;
+  background-color: #2a2a2a;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -120,7 +132,6 @@ a.button {
   }
 }
 
-
 #images {
   margin-top: 64px;
   width: 100vw;
@@ -128,47 +139,50 @@ a.button {
   justify-content: center;
 }
 
-#images>img {
+#images > img {
   position: absolute;
   border-radius: 10px;
   width: 700px;
   height: 400px;
   object-fit: cover;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, .2);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   transition: all 1s;
 }
 
-#img-1 {
+#hero > #images > #img-1 {
   z-index: 10;
   scale: 1;
 }
 
-#img-2 {
+#hero > #images > #img-2 {
   translate: -400px;
   scale: 0.8;
   rotate: -3deg;
   z-index: 5;
 }
 
-#img-3 {
+#hero > #images > #img-3 {
   translate: 400px;
   scale: 0.8;
   rotate: 3deg;
 }
 
-#intro {
+p {
   margin: auto;
-  margin-top: 800px;
-  width: clamp(10px, 90vw, 1254px);
+  margin-bottom: 56px;
+  width: clamp(10px, 90vw, 990px);
   text-align: center;
-  font-size: 36px;
+  font-size: 25px;
   font-weight: 300;
 
-  &>strong {
+  & > strong {
     font-weight: 600;
   }
 }
-
+#intro {
+  font-size: 36px;
+  margin-top: 800px;
+}
 #verlof {
   margin-top: 100px;
   width: 100vw;
@@ -187,7 +201,7 @@ a.button {
   border: none;
   background-color: white;
   color: black;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, .2);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   font-weight: 700;
 
   &:hover {
@@ -202,4 +216,45 @@ a.button {
 
 #prev-img {
   translate: -350px;
+}
+
+#slideshow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 640px;
+  max-width: 1600px;
+  margin-top: 72px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#slideshow > img {
+  position: absolute;
+  transition: opacity 2s;
+  height: 100%;
+}
+
+#slideshow > .img-button {
+  bottom: 50%;
+}
+
+#slideshow-wrap {
+  background-color: var(--primary);
+}
+
+#slideshow {
+  #img-1 {
+    z-index: 2;
+    opacity: 1;
+  }
+  #img-2 {
+    z-index: 3;
+    opacity: 0;
+  }
+  #img-3 {
+    z-index: 1;
+    opacity: 1;
+  }
 }
