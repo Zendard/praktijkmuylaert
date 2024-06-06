@@ -17,6 +17,11 @@ async fn kine() -> Option<NamedFile> {
     NamedFile::open("views/kine.html").await.ok()
 }
 
+#[get("/osteopathie")]
+async fn osteo() -> Option<NamedFile> {
+    NamedFile::open("views/osteo.html").await.ok()
+}}
+
 #[catch(404)]
 async fn not_found() -> Option<NamedFile> {
     NamedFile::open("views/404.html").await.ok()
@@ -25,7 +30,7 @@ async fn not_found() -> Option<NamedFile> {
 #[launch]
 fn rocket() -> _ {
     rocket::build()
-        .mount("/", routes![index, contact, kine])
+        .mount("/", routes![index, contact, kine, osteo])
         .register("/", catchers![not_found])
         .mount("/", rocket::fs::FileServer::from("public"))
 }
