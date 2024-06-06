@@ -20,7 +20,7 @@ async fn kine() -> Option<NamedFile> {
 #[get("/osteopathie")]
 async fn osteo() -> Option<NamedFile> {
     NamedFile::open("views/osteo.html").await.ok()
-}}
+}
 
 #[catch(404)]
 async fn not_found() -> Option<NamedFile> {
