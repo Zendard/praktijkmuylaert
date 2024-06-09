@@ -58,6 +58,7 @@ FROM alpine:3.18 AS final
 # See https://docs.docker.com/go/dockerfile-user-best-practices/
 ARG UID=10001
 ARG ROCKET_PORT
+
 RUN mkdir -p /bin/public && \
     mkdir -p /bin/views && \
     adduser \
@@ -78,7 +79,7 @@ ADD  public /praktijkmuylaert/public/
 ADD  views /praktijkmuylaert/views/
 
 # Configure rocket to listen on all interfaces.
-# ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_ADDRESS=0.0.0.0
 ENV ROCKET_PORT=$ROCKET_PORT
 
 # Expose the port that the application listens on.
