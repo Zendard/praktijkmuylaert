@@ -8,13 +8,14 @@
 
 ARG RUST_VERSION=1.78.0
 ARG APP_NAME=praktijkmuylaert
-ARG ROCKET_PORT=80
+ARG PORT
 
 ################################################################################
 # Create a stage for building the application.
 
 FROM rust:${RUST_VERSION}-alpine AS build
 ARG APP_NAME
+ARG PORT
 WORKDIR /app
 
 # Install host build dependencies.
@@ -28,6 +29,7 @@ RUN apk add --no-cache clang lld musl-dev git
 # Leverage a bind mount to the src directory to avoid having to copy the
 # source code into the container. Once built, copy the executable to an
 # output directory before the cache mounted /app/target is unmounted.
+ENV ROCKET_PORT=$PORT
 ENV ROCKET_FILES_DIR="/praktijkmuylaert"
 
 RUN --mount=type=bind,source=src,target=src \
@@ -57,7 +59,7 @@ FROM alpine:3.18 AS final
 # Create a non-privileged user that the app will run under.
 # See https://docs.docker.com/go/dockerfile-user-best-practices/
 ARG UID=10001
-ARG ROCKET_PORT
+ARG PORT
 
 RUN adduser \
     --disabled-password \
@@ -68,8 +70,6 @@ RUN adduser \
     --uid "${UID}" \
     appuser
 USER appuser
-# RUN mkdir -p /bin/ && \
-#     mkdir -p /bin/views
 # Copy the executable from the "build" stage.
 COPY --from=build /bin/praktijkmuylaert /praktijkmuylaert/praktijkmuylaert
 
@@ -78,11 +78,10 @@ ADD  views /praktijkmuylaert/views/
 
 # Configure rocket to listen on all interfaces.
 ENV ROCKET_ADDRESS=0.0.0.0
-ENV ROCKET_PORT=$ROCKET_PORT
+ENV ROCKET_PORT=$PORT
 
 # Expose the port that the application listens on.
-EXPOSE $ROCKET_PORT
-EXPOSE 80
+EXPOSE $PORT
 
 # What the container should run when it is started.
 CMD ["/praktijkmuylaert/praktijkmuylaert"]
