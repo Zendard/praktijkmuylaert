@@ -28,6 +28,8 @@ RUN apk add --no-cache clang lld musl-dev git
 # Leverage a bind mount to the src directory to avoid having to copy the
 # source code into the container. Once built, copy the executable to an
 # output directory before the cache mounted /app/target is unmounted.
+ENV ROCKET_FILES_DIR="/praktijkmuylaert"
+
 RUN --mount=type=bind,source=src,target=src \
     --mount=type=bind,source=views,target=views \
     --mount=type=bind,source=public,target=public\
@@ -39,9 +41,7 @@ RUN --mount=type=bind,source=src,target=src \
 cargo build --locked --release && \
 cp ./target/release/$APP_NAME /bin/$APP_NAME && \
 cp -r views /bin/ && \
-cp -r public /bin/ && \
-mkdir -p /bin/public && \
-mkdir -p /bin/views
+cp -r public /bin/
 ################################################################################
 # Create a new stage for running the application that contains the minimal
 # runtime dependencies for the application. This often uses a different base
@@ -59,9 +59,7 @@ FROM alpine:3.18 AS final
 ARG UID=10001
 ARG ROCKET_PORT
 
-RUN mkdir -p /bin/public && \
-    mkdir -p /bin/views && \
-    adduser \
+RUN adduser \
     --disabled-password \
     --gecos "" \
     --home "/nonexistent" \
@@ -70,8 +68,8 @@ RUN mkdir -p /bin/public && \
     --uid "${UID}" \
     appuser
 USER appuser
-RUN mkdir -p /bin/ && \
-    mkdir -p /bin/views
+# RUN mkdir -p /bin/ && \
+#     mkdir -p /bin/views
 # Copy the executable from the "build" stage.
 COPY --from=build /bin/praktijkmuylaert /praktijkmuylaert/praktijkmuylaert
 
@@ -84,6 +82,7 @@ ENV ROCKET_PORT=$ROCKET_PORT
 
 # Expose the port that the application listens on.
 EXPOSE $ROCKET_PORT
+EXPOSE 80
 
 # What the container should run when it is started.
 CMD ["/praktijkmuylaert/praktijkmuylaert"]
