@@ -62,6 +62,7 @@ header {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  padding: 16px;
 }
 
 nav {
@@ -164,6 +165,7 @@ a.button {
 }
 
 #images {
+  position: relative;
   margin-top: 64px;
   width: 100vw;
   display: flex;
@@ -173,8 +175,8 @@ a.button {
 #images > img {
   position: absolute;
   border-radius: 10px;
-  width: 700px;
-  height: 400px;
+  width: clamp(100px, 100vw, 700px);
+  max-height: 400px;
   object-fit: cover;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   transition: all 1s;
@@ -202,7 +204,7 @@ a.button {
 p {
   margin: auto;
   margin-bottom: 56px;
-  width: clamp(10px, 90vw, 990px);
+  width: clamp(10px, 60vw, 990px);
   text-align: center;
   font-size: 25px;
   font-weight: 300;
@@ -226,7 +228,7 @@ p {
 .img-button {
   position: absolute;
   z-index: 100;
-  bottom: 0;
+  bottom: -170px;
   border-radius: 50px;
   height: 50px;
   width: 50px;
@@ -243,11 +245,11 @@ p {
 }
 
 #next-img {
-  translate: 350px;
+  right: clamp(5px, 5vw, 100px);
 }
 
 #prev-img {
-  translate: -350px;
+  left: clamp(5px, 5vw, 100px);
 }
 
 #slideshow {
@@ -266,6 +268,8 @@ p {
   position: absolute;
   transition: opacity 2s;
   height: 100%;
+  max-width: 100vw;
+  object-fit: cover;
 }
 
 #slideshow > .img-button {
