@@ -1,88 +1,37 @@
-# syntax=docker/dockerfile:1
+FROM docker.io/rust:1-slim-bookworm AS build
 
-# Comments are provided throughout this file to help you get started.
-# If you need more help, visit the Dockerfile reference guide at
-# https://docs.docker.com/go/dockerfile-reference/
+## cargo package name: customize here or provide via --build-arg
+ARG pkg=praktijkmuylaert
 
-# Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
+WORKDIR /build
 
-ARG RUST_VERSION=1.78.0
-ARG APP_NAME=praktijkmuylaert
-ARG PORT
+COPY . .
+
+ENV ROCKET_FILES_DIR="."
+
+RUN --mount=type=cache,target=/build/target \
+    --mount=type=cache,target=/usr/local/cargo/registry \
+    --mount=type=cache,target=/usr/local/cargo/git \
+    set -eux; \
+    cargo build --release; \
+    objcopy --compress-debug-sections target/release/$pkg ./main
 
 ################################################################################
-# Create a stage for building the application.
 
-FROM rust:${RUST_VERSION}-alpine AS build
-ARG APP_NAME
-ARG PORT
+FROM docker.io/debian:bookworm-slim
+
 WORKDIR /app
 
-# Install host build dependencies.
-RUN apk add --no-cache clang lld musl-dev git
+## copy the main binary
+COPY --from=build /build/main ./
 
-# Build the application.
-# Leverage a cache mount to /usr/local/cargo/registry/
-# for downloaded dependencies, a cache mount to /usr/local/cargo/git/db
-# for git repository dependencies, and a cache mount to /app/target/ for
-# compiled dependencies which will speed up subsequent builds.
-# Leverage a bind mount to the src directory to avoid having to copy the
-# source code into the container. Once built, copy the executable to an
-# output directory before the cache mounted /app/target is unmounted.
-ENV ROCKET_PORT=$PORT
-ENV ROCKET_FILES_DIR="/praktijkmuylaert"
+## copy runtime assets which may or may not exist
+COPY --from=build /build/Rocket.tom[l] ./static
+COPY --from=build /build/public ./public
+COPY --from=build /build/view[s] ./views
 
-RUN \
-# RUN --mount=type=bind,source=src,target=src \
-#     --mount=type=bind,source=views,target=views \
-#     --mount=type=bind,source=public,target=public\
-#     --mount=type=bind,source=Cargo.toml,target=Cargo.toml \
-#     --mount=type=bind,source=Cargo.lock,target=Cargo.lock \
-    # --mount=type=cache,target=/app/target/ \
-    # --mount=type=cache,target=/usr/local/cargo/git/db \
-    # --mount=type=cache,target=/usr/local/cargo/registry/ \
-cargo build --locked --release && \
-cp ./target/release/$APP_NAME /bin/$APP_NAME && \
-cp -r views /bin/ && \
-cp -r public /bin/
-################################################################################
-# Create a new stage for running the application that contains the minimal
-# runtime dependencies for the application. This often uses a different base
-# image from the build stage where the necessary files are copied from the build
-# stage.
-#
-# The example below uses the alpine image as the foundation for running the app.
-# By specifying the "3.18" tag, it will use version 3.18 of alpine. If
-# reproducability is important, consider using a digest
-# (e.g., alpine@sha256:664888ac9cfd28068e062c991ebcff4b4c7307dc8dd4df9e728bedde5c449d91).
-FROM alpine:3.18 AS final
-
-# Create a non-privileged user that the app will run under.
-# See https://docs.docker.com/go/dockerfile-user-best-practices/
-ARG UID=10001
-ARG PORT
-
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "/nonexistent" \
-    --shell "/sbin/nologin" \
-    --no-create-home \
-    --uid "${UID}" \
-    appuser
-USER appuser
-# Copy the executable from the "build" stage.
-COPY --from=build /bin/praktijkmuylaert /praktijkmuylaert/praktijkmuylaert
-
-ADD  public /praktijkmuylaert/public/
-ADD  views /praktijkmuylaert/views/
-
-# Configure rocket to listen on all interfaces.
+## ensure the container listens globally on port 8080
 ENV ROCKET_ADDRESS=0.0.0.0
-ENV ROCKET_PORT=$PORT
+ENV ROCKET_PORT=8080
 
-# Expose the port that the application listens on.
-EXPOSE $PORT
-
-# What the container should run when it is started.
-CMD ["/praktijkmuylaert/praktijkmuylaert"]
+CMD ./main
