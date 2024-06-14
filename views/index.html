@@ -1,45 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link href="css/style.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/dc3124471a.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-  <link href="css/style.css" rel="stylesheet">
-</head>
-
-<body>
-  <header>
-    <h1 id="logo">Praktijk Muylaert</h1>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/kinesitherapie">Kinesitherapie</a>
-      <a href="/osteopathie">Osteopathie</a>
-      <a href="/contact">Contact</a>
-    </nav>
-  </header>
-  <div id="hero">
-    <h1 id="title" class="reveal">
-      <span style="color: #3d96ff;">Kinesitherapie</span>
-      <span style="color: #3df5ff;">Osteopathie</span>
-    </h1>
-    <a href="/contact" class="button reveal">Maak een afspraak</a>
-    <div id="images">
-      <img src="/img/1.jpg" id="img-1" onclick="window.location.href='/kinesitherapie'" >
-      <img src="/img/2.jpg" id="img-2">
-      <img src="/img/3.jpg" id="img-3" onclick="window.location.href='/osteopathie'">
-      <button id="prev-img" class="img-button"><</button>
-      <button id="next-img" class="img-button">></button>
+  <body>
+    <header>
+      <h1 id="logo">Praktijk Muylaert</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/kinesitherapie">Kinesitherapie</a>
+        <a href="/osteopathie">Osteopathie</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <button id="nav-button"><i class="fa-solid fa-bars"></i></button>
+    </header>
+    <div id="hero">
+      <h1 id="title" class="reveal">
+        <span style="color: #3d96ff">Kinesitherapie</span>
+        <span style="color: #3df5ff">Osteopathie</span>
+      </h1>
+      <a href="/contact" class="button reveal">Maak een afspraak</a>
+      <div id="images">
+        <img
+          src="/img/1.jpg"
+          id="img-1"
+          onclick="window.location.href='/kinesitherapie'"
+        />
+        <img src="/img/2.jpg" id="img-2" />
+        <img
+          src="/img/3.jpg"
+          id="img-3"
+          onclick="window.location.href='/osteopathie'"
+        />
+        <button id="prev-img" class="img-button"><</button>
+        <button id="next-img" class="img-button">></button>
+      </div>
     </div>
-  </div>
 
-  <p id="intro" class="reveal">
-    Van harte welkom op de webpagina van Marten Muylaert,
-    Licenciaat in de kinesitherapie en gediplomeerd osteopaat.
-    Ik ontvang u graag te <strong>Bergestraat 26, 9550 Steenhuize-Wijnhuize</strong> (Herzele).
-    Alle behandelingen gebeuren na afspraak van maandag tot vrijdag. Ook huisbezoeken zijn mogelijk.
-  </p>
-  <h3 id="verlof" class="reveal">Jaarlijks verlof van maandag 1 juli t.e.m zondag 7 juli</h3>
-  <script src="/js/carousel.js"></script>
-  <script src="/js/scroll.js"></script>
+    <p id="intro" class="reveal">
+      Van harte welkom op de webpagina van Marten Muylaert, Licenciaat in de
+      kinesitherapie en gediplomeerd osteopaat. Ik ontvang u graag te
+      <strong>Bergestraat 26, 9550 Steenhuize-Wijnhuize</strong> (Herzele). Alle
+      behandelingen gebeuren na afspraak van maandag tot vrijdag. Ook
+      huisbezoeken zijn mogelijk.
+    </p>
+    <h3 id="verlof" class="reveal">
+      Jaarlijks verlof van maandag 1 juli t.e.m zondag 7 juli
+    </h3>
+    <script src="/js/carousel.js"></script>
+    <script src="/js/mobile-nav.js"></script>
+    <script src="/js/scroll.js"></script>
+  </body>
 </html>
