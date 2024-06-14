@@ -24,10 +24,10 @@ body {
 }
 
 :target:before {
-    content: "";
-    display: block;
-    height: 100px;
-    margin: -50px 0 0;
+  content: "";
+  display: block;
+  height: 100px;
+  margin: -50px 0 0;
 }
 
 h1 {
@@ -37,7 +37,7 @@ h1 {
   text-align: center;
 }
 
-h2{
+h2 {
   width: 30rem;
 }
 
@@ -83,7 +83,7 @@ li {
   font-size: 26px;
 }
 nav > a {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 600;
   color: var(--text);
   text-decoration: none;
@@ -95,7 +95,7 @@ nav > a {
   }
 }
 
-#scroll-menu{
+#scroll-menu {
   margin-top: 20px;
   position: sticky;
   top: 20px;
@@ -105,11 +105,11 @@ nav > a {
   width: 6rem;
   align-items: stretch;
   gap: 0.3rem;
-  border-left: solid 3px var(--primary);
+  border-left: solid 5px var(--primary);
   padding-left: 5px;
 
-  &>a{
-  font-weight: 400;
+  & > a {
+    font-weight: 400;
   }
 }
 
@@ -178,7 +178,7 @@ a.button {
   object-fit: cover;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   transition: all 1s;
-cursor:pointer;
+  cursor: pointer;
 }
 
 #hero > #images > #img-1 {
