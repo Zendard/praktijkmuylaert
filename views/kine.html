@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kinesitherapie</title>
     <link href="css/style.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/dc3124471a.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
@@ -16,11 +20,10 @@
         <a href="/osteopathie">Osteopathie</a>
         <a href="/contact">Contact</a>
       </nav>
+      <button id="nav-button"><i class="fa-solid fa-bars"></i></button>
     </header>
     <h1 class="reveal">Kinesitherapie</h1>
-    <h2 class="reveal" style="text-align: center;">
-      Genezen door te bewegen
-    </h2>
+    <h2 class="reveal" style="text-align: center">Genezen door te bewegen</h2>
     <section id="slideshow-wrap">
       <div id="slideshow">
         <img src="/img/1.jpg" id="img-1" />
@@ -29,12 +32,12 @@
       </div>
     </section>
 
-<nav id="scroll-menu">
- <a href="#algemeen">Algemeen</a> 
- <a href="#werkwijze">Werkwijze</a> 
- <a href="#indicaties">Indicaties</a> 
- <a href="#proef2move">Proef2Move</a> 
-</nav>
+    <nav id="scroll-menu">
+      <a href="#algemeen">Algemeen</a>
+      <a href="#werkwijze">Werkwijze</a>
+      <a href="#indicaties">Indicaties</a>
+      <a href="#proef2move">Proef2Move</a>
+    </nav>
 
     <p class="reveal" id="algemeen" style="margin-top: 72px">
       Ik ben afgestudeerd als kinesitherapeut in 1999 aan de universiteit Gent
@@ -43,7 +46,11 @@
       bewijst zijn nut in verschillende medische domeinen
     </p>
 
-    <h2 class="reveal" id="werkwijze" style="text-align: center; font-size: 36px; width: 20rem;">
+    <h2
+      class="reveal"
+      id="werkwijze"
+      style="text-align: center; font-size: 36px; width: 20rem"
+    >
       Werkwijze
     </h2>
     <p class="reveal">
@@ -78,7 +85,9 @@
         >RIZIV-tarieven</a
       >.
     </p>
-    <p class="reveal">Betaling is mogelijk contant of via overschrijving.</p>
+    <p class="reveal">
+      Betaling is mogelijk contant, via overschrijving of via QR Code.
+    </p>
     <p class="reveal">
       Ik ben lid van de Belgische beroepsvereniging voor kinesitherapeuten
       <a href="https://www.axxon.be/nl/home/">AXXON</a>
@@ -159,6 +168,7 @@
       >
     </div>
     <script src="/js/slideshow.js"></script>
+    <script src="/js/mobile-nav.js"></script>
     <script src="/js/scroll.js"></script>
   </body>
 </html>
