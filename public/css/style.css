@@ -193,7 +193,7 @@ nav > a {
 #title {
   margin-top: 170px;
   font-weight: 700;
-  font-size: clamp(10px, 14vw,72px);
+  font-size: clamp(10px, 14vw, 72px);
 }
 
 a.button {
@@ -252,7 +252,7 @@ a.button {
 p {
   margin: auto;
   margin-bottom: 56px;
-  width: clamp(10px, 60vw, 990px);
+  width: clamp(10px, 80vw, 990px);
   text-align: center;
   font-size: 25px;
   font-weight: 300;
