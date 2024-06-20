@@ -31,7 +31,7 @@ body {
 }
 
 h1 {
-  font-size: 72px;
+  font-size: clamp(10px, 6vw, 36px);
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -63,6 +63,7 @@ header {
   margin-left: auto;
   margin-right: auto;
   padding: 16px;
+  padding-right: 0;
   background-color: var(--background);
   z-index: 2;
 }
@@ -83,7 +84,7 @@ nav {
   height: 104px;
   margin-top: -28px;
   margin-bottom: -6px;
-  margin-right: 2rem;
+  margin-right: clamp(0px, 2vw, 2rem);
   cursor: pointer;
   background-color: transparent;
 }
@@ -110,7 +111,7 @@ nav {
   }
   nav.nav-active {
     z-index: 1;
-    top: 120px;
+    top: 108px;
   }
 
   #nav-button {
@@ -161,7 +162,7 @@ nav > a {
 }
 
 #logo {
-  font-size: 36px;
+  font-size: clamp(10px, 6vw, 36px);
   font-weight: 700;
   flex-grow: 3;
   margin-left: 0px;
@@ -192,7 +193,7 @@ nav > a {
 #title {
   margin-top: 170px;
   font-weight: 700;
-  font-size: 72px;
+  font-size: clamp(10px, 14vw,72px);
 }
 
 a.button {
@@ -261,15 +262,16 @@ p {
   }
 }
 #intro {
-  font-size: 36px;
+  font-size: clamp(10px, 6vw, 36px);
   margin-top: 800px;
 }
 #verlof {
+  padding: 3vw;
   margin-top: 100px;
-  width: 100vw;
+  /*width: 100vw;*/
   text-align: center;
   font-weight: 600;
-  font-size: 36px;
+  font-size: clamp(5px, 8vw, 36px);
 }
 
 .img-button {
