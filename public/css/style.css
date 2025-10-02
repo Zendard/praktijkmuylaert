@@ -37,10 +37,6 @@ h1 {
   text-align: center;
 }
 
-h2 {
-  width: 30rem;
-}
-
 .reveal {
   translate: 0 40px;
   opacity: 0;
@@ -84,7 +80,7 @@ nav {
   height: 104px;
   margin-top: -28px;
   margin-bottom: -6px;
-  margin-right: clamp(0px, 2vw, 2rem);
+  padding-right: clamp(0px, 2vw, 2rem);
   cursor: pointer;
   background-color: transparent;
 }
@@ -117,6 +113,9 @@ nav {
   #nav-button {
     display: block;
   }
+  #scroll-menu {
+    display: none !important;
+  }
 }
 
 a {
@@ -130,7 +129,8 @@ a {
 li {
   font-size: 26px;
 }
-nav > a {
+nav > a,
+#scroll-menu > a {
   font-size: 24px;
   font-weight: 600;
   color: var(--text);
@@ -223,7 +223,7 @@ a.button {
 #images > img {
   position: absolute;
   border-radius: 10px;
-  width: clamp(100px, 100vw, 700px);
+  width: clamp(10px, 90vw, 700px);
   max-height: 400px;
   object-fit: cover;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
@@ -306,27 +306,49 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 640px;
-  max-width: 1600px;
-  margin-top: 72px;
-  margin-left: auto;
-  margin-right: auto;
+  flex-grow: 3;
+  height: 100%;
+  aspect-ratio: 16/9;
+  min-width: 40vw;
 }
 
 #slideshow > img {
   position: absolute;
   transition: opacity 2s;
-  height: 100%;
-  max-width: 100vw;
   object-fit: cover;
+  border-radius: 20px;
+  height: 100%;
+  width: 100%;
 }
 
 #slideshow > .img-button {
   bottom: 50%;
 }
 
-#slideshow-wrap {
-  background-color: var(--primary);
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 4rem clamp(10px, 5vw, 8rem);
+  background-color: #2a2a2a;
+  margin-top: -12rem;
+  margin-bottom: 4rem;
+  padding-top: 16rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.text {
+  flex-grow: 1;
+
+  h1 {
+    color: #3df5ff;
+    font-size: calc(2rem + clamp(1px, 2vw, 2rem));
+  }
+  h2 {
+    width: auto;
+    font-size: calc(1rem + clamp(1px, 1vw, 1rem));
+  }
 }
 
 #slideshow {
